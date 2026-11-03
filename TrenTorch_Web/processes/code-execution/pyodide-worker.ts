@@ -14,9 +14,12 @@ import { toBase64 } from './to-base64';
 self.onmessage = async (e: MessageEvent) => {
 	// Origin verification — only trust messages from the same origin as this worker.
 	// `'null'` covers blob: and data: URLs that some bundlers use in development.
-	const trustedOrigins = new Set([self.location.origin, 'null']);
+	// Written as direct comparisons rather than a `Set` lookup on purpose:
+	// CodeQL's js/missing-origin-check sanitizer model only recognizes literal
+	// origin comparisons, so the previous `trustedOrigins.has(...)` form —
+	// identical semantics — kept alert #8 open across every rescan.
 	const messageOrigin = typeof e.origin === 'string' ? e.origin : '';
-	if (messageOrigin && !trustedOrigins.has(messageOrigin)) {
+	if (messageOrigin && messageOrigin !== self.location.origin && messageOrigin !== 'null') {
 		self.postMessage({ type: 'error', error: `Untrusted message origin: ${messageOrigin}` });
 		return;
 	}

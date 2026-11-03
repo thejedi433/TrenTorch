@@ -21,6 +21,16 @@ name: 'Open an Issue for New Code Scanning Alerts'
 # poll against the code-scanning/alerts API sidesteps that entirely and
 # is directly testable via workflow_dispatch, unlike a trigger that fails
 # silently.
+#
+# Forks ship with the Issues feature disabled, and every issues write
+# (create, comment, close) then fails with HTTP 410 "Issues has been
+# disabled in this repository" -- unhandled, it turned every scheduled
+# run red on this fork starting the day the first CodeQL alert appeared
+# (Oct 31), while the read endpoints kept working and hid the cause.
+# The workflow now checks `has_issues` up front and, when disabled, logs
+# the untracked-alert summary to the run output and exits green: the
+# alert page stays the source of truth, and CI stops crying about a
+# feature this repo deliberately doesn't have.
 
 on:
   schedule:
@@ -40,12 +50,34 @@ jobs:
       - uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
           script: |
+            // Forks have Issues disabled by default; every issues write
+            // below would 410. Degrade to a log-only run instead of
+            // failing the schedule (which mutes alerting entirely, since
+            // broken schedules get auto-disabled after 60 days).
+            const { data: repoMeta } = await github.rest.repos.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+            });
+            const issuesEnabled = repoMeta.has_issues;
+
             const { data: openAlerts } = await github.rest.codeScanning.listAlertsForRepo({
               owner: context.repo.owner,
               repo: context.repo.repo,
               state: "open",
               ref: "refs/heads/TrenTorch-Dev",
             });
+
+            if (!issuesEnabled) {
+              if (openAlerts.length === 0) {
+                console.log("No open code scanning alerts and Issues are disabled; nothing to do.");
+                return;
+              }
+              for (const alert of openAlerts) {
+                const rule = alert.rule || {};
+                console.log(`::notice::CodeQL alert #${alert.number} open (${rule.id}, ${rule.security_severity_level || "unknown"}): ${alert.html_url} -- tracking issues skipped because Issues are disabled on this repo.`);
+              }
+              return;
+            }
 
             const { data: openIssues } = await github.rest.issues.listForRepo({
               owner: context.repo.owner,

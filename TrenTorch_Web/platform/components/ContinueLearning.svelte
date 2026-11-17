@@ -2,9 +2,9 @@
 	import { resolve } from '$app/paths';
 	import { ArrowRight } from '@lucide/svelte';
 	import DifficultyBadge from './DifficultyBadge.svelte';
-	import { findQuestionBySlug } from '$data/questions';
-	import { solved } from '$processes/progress-tracking/solved.svelte';
-	import { attempted } from '$processes/progress-tracking/attempted.svelte';
+	import { findQuestionBySlug } from '#data/questions.ts';
+	import { solved } from '#processes/progress-tracking/solved.svelte.ts';
+	import { attempted } from '#processes/progress-tracking/attempted.svelte.ts';
 
 	const MAX_ITEMS = 6;
 
@@ -32,9 +32,7 @@
 			>
 				<div class="min-w-0">
 					<p class="truncate font-mono text-sm">{item.question.title}</p>
-					<p class="truncate text-xs text-muted-foreground">
-						{item.partTitle} &middot; {item.trackName}
-					</p>
+					<p class="truncate text-xs text-muted-foreground">{item.partTitle} · {item.trackName}</p>
 				</div>
 				<div class="flex shrink-0 items-center gap-2">
 					<DifficultyBadge difficulty={item.question.difficulty} />
@@ -47,8 +45,10 @@
 	</div>
 {:else}
 	<p class="text-sm text-muted-foreground">
-		Nothing in progress yet. <a href={resolve('/questions')} class="underline hover:text-foreground"
-			>Pick a question</a
-		> to get started.
+		Nothing in progress yet.
+
+		<a href={resolve('questions')} class="underline hover:text-foreground">Pick a question</a>
+
+		to get started.
 	</p>
 {/if}

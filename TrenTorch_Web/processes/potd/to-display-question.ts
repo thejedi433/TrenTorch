@@ -1,5 +1,5 @@
-import type { Difficulty, Question } from '$data/questions';
-import type { GeneratedQuestion } from '$processes/ide-content/curriculum-index';
+import type { Difficulty, Question } from '#data/questions.ts';
+import type { GeneratedQuestion } from '#processes/ide-content/curriculum-index.ts';
 import type { PotdSummary } from './potd-summary';
 
 // POTD entries reference real IDE content (data/app_data/...) directly,

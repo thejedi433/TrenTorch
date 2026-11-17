@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import * as Avatar from '$components/ui/avatar';
-	import { session } from '$processes/auth/session.svelte';
+	import * as Avatar from '#components/ui/avatar/index.ts';
+	import { session } from '#processes/auth/session.svelte.ts';
 
 	// Falls back to "?" while the session is still loading and for signed-out
 	// visitors alike -- only a confirmed signed-in user gets their initial.
@@ -11,7 +11,7 @@
 </script>
 
 <a
-	href={resolve('/account')}
+	href={resolve('account')}
 	class="inline-flex size-9 items-center justify-center rounded-md transition-colors hover:bg-accent hover:text-accent-foreground"
 	aria-label={session.user ? 'Your account' : 'Sign in'}
 >

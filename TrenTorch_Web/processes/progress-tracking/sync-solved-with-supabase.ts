@@ -1,5 +1,5 @@
 import { solved } from './solved.svelte';
-import { isPotdQuestion } from '$processes/potd/is-potd-question';
+import { isPotdQuestion } from '#processes/potd/is-potd-question.ts';
 import { fetchSolvedQuestions, upsertSolvedQuestions } from './supabase-solved-store';
 
 // Runs once per sign-in (see ProgressSync.svelte): a genuine two-way merge,

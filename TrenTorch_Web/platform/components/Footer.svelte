@@ -6,7 +6,8 @@
 	<div class="container flex flex-col gap-4">
 		<div class="flex flex-col items-center justify-between gap-3 md:flex-row">
 			<p class="text-center text-sm leading-loose text-balance text-muted-foreground md:text-left">
-				&copy; {new Date().getFullYear()} TrenTorch. Source-available, free for
+				© {new Date().getFullYear()} TrenTorch. Source-available, free for
+
 				<a
 					href="https://github.com/TrenTorch/TrenTorch/blob/TrenTorch-Dev/LICENSE"
 					class="font-medium underline underline-offset-4 hover:text-foreground"
@@ -22,13 +23,18 @@
 				</a>
 				. Free to use and funded by sponsorships and donations.
 			</p>
+
 			<nav class="flex items-center gap-4 font-mono text-sm text-muted-foreground">
-				<a href="https://github.com/TrenTorch" class="transition-colors hover:text-foreground">
-					github.com/TrenTorch
-				</a>
-				<a href={resolve('/terms')} class="transition-colors hover:text-foreground">Terms</a>
-				<a href={resolve('/privacy')} class="transition-colors hover:text-foreground">Privacy</a>
-				<a href={resolve('/contact')} class="transition-colors hover:text-foreground">Contact</a>
+				<a href="https://github.com/TrenTorch" class="transition-colors hover:text-foreground"
+					>github.com/TrenTorch</a
+				>
+
+				<a href={resolve('terms')} class="transition-colors hover:text-foreground">Terms</a>
+
+				<a href={resolve('privacy')} class="transition-colors hover:text-foreground">Privacy</a>
+
+				<a href={resolve('contact')} class="transition-colors hover:text-foreground">Contact</a>
+
 				<a
 					href="https://discord.gg/2hSsftQCZ9"
 					target="_blank"

@@ -1,9 +1,9 @@
 <script lang="ts">
-	import * as Dialog from '$components/ui/dialog';
+	import * as Dialog from '#components/ui/dialog/index.ts';
 	import AuthPanel from './AuthPanel.svelte';
-	import { signInPrompt } from '$processes/auth/sign-in-prompt.svelte';
-	import { session } from '$processes/auth/session.svelte';
-	import { clearAfterSignInDestination } from '$processes/auth/after-sign-in-destination';
+	import { signInPrompt } from '#processes/auth/sign-in-prompt.svelte.ts';
+	import { session } from '#processes/auth/session.svelte.ts';
+	import { clearAfterSignInDestination } from '#processes/auth/after-sign-in-destination.ts';
 
 	// Signing in (any method) fires onAuthStateChange, which updates
 	// session.user -- close the prompt the moment that happens instead of

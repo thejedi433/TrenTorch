@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import { ArrowLeft } from '@lucide/svelte';
-	import QuestionRow from '$components/QuestionRow.svelte';
-	import { getPartIcon } from '$data/part-icons';
-	import { solved } from '$processes/progress-tracking/solved.svelte';
-	import type { Part } from '$data/questions';
+	import QuestionRow from '#components/QuestionRow.svelte';
+	import { getPartIcon } from '#data/part-icons.ts';
+	import { solved } from '#processes/progress-tracking/solved.svelte.ts';
+	import type { Part } from '#data/questions.ts';
 	import type { PageData } from './$types';
 
 	let { data } = $props<{ data: PageData }>();
@@ -24,7 +24,7 @@
 <div class="container flex flex-col gap-6 px-4 py-12 md:px-6">
 	<div>
 		<a
-			href={resolve('/questions')}
+			href={resolve('questions')}
 			class="mb-4 inline-flex items-center gap-1.5 font-mono text-xs tracking-wider text-muted-foreground uppercase transition-colors hover:text-primary"
 		>
 			<ArrowLeft class="size-3.5" />

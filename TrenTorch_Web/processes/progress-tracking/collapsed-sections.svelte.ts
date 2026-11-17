@@ -1,4 +1,4 @@
-import { browser } from '$app/environment';
+import { browser } from '$app/env';
 import { SvelteSet } from 'svelte/reactivity';
 
 // Persists which curriculum Parts a student has collapsed on the

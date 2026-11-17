@@ -46,7 +46,7 @@ jobs:
               - 'TrenTorch_Web/package.json'
               - 'TrenTorch_Web/package-lock.json'
               - 'TrenTorch_Web/.config/**'
-              - 'TrenTorch_Web/svelte.config.js'
+              - 'TrenTorch_Web/src/env.ts'
               - 'TrenTorch_Web/tsconfig.json'
               - '.github/workflows/ci.yml'
             content:
@@ -84,7 +84,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          node-version: '22'
+          node-version: '22.17'
           cache: 'npm'
           cache-dependency-path: TrenTorch_Web/package-lock.json
 
@@ -95,7 +95,7 @@ jobs:
         run: npm run lint
 
       - name: Type check
-        # $env/static/public needs PUBLIC_SUPABASE_URL/ANON_KEY to resolve
+        # $app/env/public needs PUBLIC_SUPABASE_URL/ANON_KEY to resolve
         # to *some* string at build/check time -- .env.test's fake values
         # satisfy that with zero real credentials anywhere in CI. Nothing
         # here makes a network call, so a fake, unreachable URL is correct,
@@ -130,7 +130,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          node-version: '22'
+          node-version: '22.17'
           cache: 'npm'
           cache-dependency-path: TrenTorch_Web/package-lock.json
 
@@ -189,7 +189,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          node-version: '22'
+          node-version: '22.17'
           cache: 'npm'
           cache-dependency-path: TrenTorch_Web/package-lock.json
 

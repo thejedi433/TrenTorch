@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { potdEntries } from './potd';
-import { questionsById } from '$processes/ide-content/curriculum-index';
+import { questionsById } from '#processes/ide-content/curriculum-index.ts';
 
 describe('potd schedule', () => {
 	it('every entry points at a real question (a wrong id is silently dropped at runtime)', () => {

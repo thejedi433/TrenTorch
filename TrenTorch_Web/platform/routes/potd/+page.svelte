@@ -1,19 +1,19 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
-	import { browser } from '$app/environment';
+	import { browser } from '$app/env';
 	import { CalendarCheck, ArrowRight } from '@lucide/svelte';
-	import ProfileCard from '$components/ProfileCard.svelte';
-	import ProgressSummary from '$components/ProgressSummary.svelte';
-	import ModuleSection from '$components/ModuleSection.svelte';
-	import QuestionFilters from '$components/QuestionFilters.svelte';
-	import DifficultyBadge from '$components/DifficultyBadge.svelte';
-	import Button from '$components/Button.svelte';
-	import Pagination from '$components/Pagination.svelte';
-	import { getProgressStats } from '$data/questions';
-	import { solved } from '$processes/progress-tracking/solved.svelte';
-	import { getTodaysPotdPart, getPastPotdPart } from '$processes/potd/get-potd-part';
-	import { getTodaysPotd } from '$processes/potd/get-todays-potd';
+	import ProfileCard from '#components/ProfileCard.svelte';
+	import ProgressSummary from '#components/ProgressSummary.svelte';
+	import ModuleSection from '#components/ModuleSection.svelte';
+	import QuestionFilters from '#components/QuestionFilters.svelte';
+	import DifficultyBadge from '#components/DifficultyBadge.svelte';
+	import Button from '#components/Button.svelte';
+	import Pagination from '#components/Pagination.svelte';
+	import { getProgressStats } from '#data/questions.ts';
+	import { solved } from '#processes/progress-tracking/solved.svelte.ts';
+	import { getTodaysPotdPart, getPastPotdPart } from '#processes/potd/get-potd-part.ts';
+	import { getTodaysPotd } from '#processes/potd/get-todays-potd.ts';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
@@ -113,9 +113,11 @@
 						<h1 class="mb-1 truncate font-mono text-xl font-bold">
 							{todaysProblem.question.title}
 						</h1>
+
 						<p class="mb-2 truncate text-sm text-muted-foreground">
-							{todaysProblem.sectionLabel} &middot; {todaysProblem.trackLabel}
+							{todaysProblem.sectionLabel} · {todaysProblem.trackLabel}
 						</p>
+
 						<DifficultyBadge difficulty={todaysProblem.question.difficulty} />
 					</div>
 					<Button

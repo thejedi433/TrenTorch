@@ -1,4 +1,4 @@
-import { potdEntries } from '$data/potd';
+import { potdEntries } from '#data/potd.ts';
 import { toDisplayQuestion, type PotdDisplayQuestion } from './to-display-question';
 import { localDateString } from './local-date-string';
 import type { PotdSummary } from './potd-summary';

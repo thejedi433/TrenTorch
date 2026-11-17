@@ -2,27 +2,27 @@
 	import { onMount } from 'svelte';
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
-	import { browser } from '$app/environment';
-	import type { QuestionContent } from '$data/curriculum/types';
-	import { pyodideService } from '$processes/code-execution/pyodide-service';
-	import { loadUserCode } from '$processes/code-execution/load-user-code';
-	import { saveUserCode } from '$processes/code-execution/save-user-code';
-	import { resetUserCode } from '$processes/code-execution/reset-user-code';
-	import { loadIdeLayout } from '$processes/code-execution/load-ide-layout';
-	import { saveIdeLayout } from '$processes/code-execution/save-ide-layout';
-	import type { IdeLayout } from '$processes/code-execution/ide-layout-key';
-	import { solved } from '$processes/progress-tracking/solved.svelte';
-	import { attempted } from '$processes/progress-tracking/attempted.svelte';
-	import { session } from '$processes/auth/session.svelte';
-	import { signInPrompt } from '$processes/auth/sign-in-prompt.svelte';
-	import { potdEntries } from '$data/potd';
-	import { localDateString } from '$processes/potd/local-date-string';
-	import IdeHeader from '$components/ide/IdeHeader.svelte';
-	import GuidePane from '$components/ide/GuidePane.svelte';
-	import CodeEditor from '$components/ide/CodeEditor.svelte';
-	import OutputConsole from '$components/ide/OutputConsole.svelte';
-	import TestResultsView from '$components/ide/TestResultsView.svelte';
-	import PaneResizer from '$components/ide/PaneResizer.svelte';
+	import { browser } from '$app/env';
+	import type { QuestionContent } from '#data/curriculum/types.ts';
+	import { pyodideService } from '#processes/code-execution/pyodide-service.ts';
+	import { loadUserCode } from '#processes/code-execution/load-user-code.ts';
+	import { saveUserCode } from '#processes/code-execution/save-user-code.ts';
+	import { resetUserCode } from '#processes/code-execution/reset-user-code.ts';
+	import { loadIdeLayout } from '#processes/code-execution/load-ide-layout.ts';
+	import { saveIdeLayout } from '#processes/code-execution/save-ide-layout.ts';
+	import type { IdeLayout } from '#processes/code-execution/ide-layout-key.ts';
+	import { solved } from '#processes/progress-tracking/solved.svelte.ts';
+	import { attempted } from '#processes/progress-tracking/attempted.svelte.ts';
+	import { session } from '#processes/auth/session.svelte.ts';
+	import { signInPrompt } from '#processes/auth/sign-in-prompt.svelte.ts';
+	import { potdEntries } from '#data/potd.ts';
+	import { localDateString } from '#processes/potd/local-date-string.ts';
+	import IdeHeader from '#components/ide/IdeHeader.svelte';
+	import GuidePane from '#components/ide/GuidePane.svelte';
+	import CodeEditor from '#components/ide/CodeEditor.svelte';
+	import OutputConsole from '#components/ide/OutputConsole.svelte';
+	import TestResultsView from '#components/ide/TestResultsView.svelte';
+	import PaneResizer from '#components/ide/PaneResizer.svelte';
 	import { BookOpen, Code2, Terminal, ShieldCheck, ArrowLeft } from '@lucide/svelte';
 	import type { PageData } from './$types';
 
@@ -45,9 +45,7 @@
 	// svelte/no-navigation-without-resolve rule the way a direct
 	// resolve() call in the component that renders the <a> can).
 	let fromPage = $derived(browser ? page.url.searchParams.get('from') : null);
-	let backHref = $derived(
-		fromPage ? resolve(`/questions?page=${fromPage}`) : resolve('/questions')
-	);
+	let backHref = $derived(fromPage ? resolve(`questions?page=${fromPage}`) : resolve('questions'));
 
 	// Prev/next in the same curriculum order /questions lists them in, so
 	// the guide pane's arrows step through in the exact order a student
@@ -120,6 +118,7 @@
 			15,
 			75
 		);
+
 		saveIdeLayout({ leftPanePercent, bottomPanePercent });
 	}
 
@@ -356,30 +355,26 @@
 					? 'border-b-2 border-primary bg-primary font-bold text-primary-foreground'
 					: 'text-muted-foreground'}"
 				onclick={() => (mobileActiveTab = 'guide')}
+				><BookOpen class="size-3.5" /> <span>Guide</span></button
 			>
-				<BookOpen class="size-3.5" />
-				<span>Guide</span>
-			</button>
+
 			<button
 				type="button"
 				class="flex flex-1 items-center justify-center gap-1.5 py-2 {mobileActiveTab === 'editor'
 					? 'border-b-2 border-primary bg-primary font-bold text-primary-foreground'
 					: 'text-muted-foreground'}"
 				onclick={() => (mobileActiveTab = 'editor')}
+				><Code2 class="size-3.5" /> <span>Editor</span></button
 			>
-				<Code2 class="size-3.5" />
-				<span>Editor</span>
-			</button>
+
 			<button
 				type="button"
 				class="flex flex-1 items-center justify-center gap-1.5 py-2 {mobileActiveTab === 'output'
 					? 'border-b-2 border-primary bg-primary font-bold text-primary-foreground'
 					: 'text-muted-foreground'}"
 				onclick={() => (mobileActiveTab = 'output')}
+				><Terminal class="size-3.5" /> <span>Output</span></button
 			>
-				<Terminal class="size-3.5" />
-				<span>Output</span>
-			</button>
 		</div>
 
 		<!-- Main Multi-Pane Area -->
@@ -500,10 +495,8 @@
 								? 'border-t-2 border-primary bg-primary font-bold text-primary-foreground'
 								: 'text-muted-foreground hover:text-foreground'}"
 							onclick={() => (activeRightTab = 'console')}
+							><Terminal class="size-3" /> <span>Console</span></button
 						>
-							<Terminal class="size-3" />
-							<span>Console</span>
-						</button>
 					</div>
 
 					<!-- Tab Contents -->

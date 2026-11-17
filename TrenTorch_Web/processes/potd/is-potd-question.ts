@@ -1,4 +1,4 @@
-import { potdEntries } from '$data/potd';
+import { potdEntries } from '#data/potd.ts';
 
 // Whether a question id was ever featured as a Problem of the Day, on any
 // date -- not just today's. A student who solves an older POTD later still

@@ -1,6 +1,6 @@
-import { loadIdeContent } from '$processes/ide-content/load-ide-content';
-import { getAdjacentQuestionIds } from '$processes/ide-content/get-adjacent-question-ids';
-import { curriculum } from '$data/questions';
+import { loadIdeContent } from '#processes/ide-content/load-ide-content.ts';
+import { getAdjacentQuestionIds } from '#processes/ide-content/get-adjacent-question-ids.ts';
+import { curriculum } from '#data/questions.ts';
 import type { EntryGenerator, PageServerLoad } from './$types';
 
 // Prerendered: every /ide/<slug> page is a static file, not a serverless

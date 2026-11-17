@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { session } from '$processes/auth/session.svelte';
-	import { syncSolvedWithSupabase } from '$processes/progress-tracking/sync-solved-with-supabase';
+	import { session } from '#processes/auth/session.svelte.ts';
+	import { syncSolvedWithSupabase } from '#processes/progress-tracking/sync-solved-with-supabase.ts';
 
 	// Runs once per distinct signed-in user, not on every reactive re-render
 	// (session.user is a new object on each auth event, so tracking it

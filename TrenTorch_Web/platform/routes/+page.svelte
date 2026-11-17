@@ -1,17 +1,17 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import LogoBadge from '$components/LogoBadge.svelte';
-	import Button from '$components/Button.svelte';
-	import StatTile from '$components/StatTile.svelte';
-	import HowItWorks from '$components/HowItWorks.svelte';
-	import Testimonials from '$components/Testimonials.svelte';
+	import LogoBadge from '#components/LogoBadge.svelte';
+	import Button from '#components/Button.svelte';
+	import StatTile from '#components/StatTile.svelte';
+	import HowItWorks from '#components/HowItWorks.svelte';
+	import Testimonials from '#components/Testimonials.svelte';
 	import { BookOpen, Heart, CalendarCheck, ArrowRight } from '@lucide/svelte';
-	import Github from '$components/GithubIcon.svelte';
-	import DifficultyBadge from '$components/DifficultyBadge.svelte';
-	import { curriculum, getProgressStats } from '$data/questions';
-	import { gateBehindSignIn } from '$processes/auth/gate-behind-sign-in';
-	import { browser } from '$app/environment';
-	import { getTodaysPotd } from '$processes/potd/get-todays-potd';
+	import Github from '#components/GithubIcon.svelte';
+	import DifficultyBadge from '#components/DifficultyBadge.svelte';
+	import { curriculum, getProgressStats } from '#data/questions.ts';
+	import { gateBehindSignIn } from '#processes/auth/gate-behind-sign-in.ts';
+	import { browser } from '$app/env';
+	import { getTodaysPotd } from '#processes/potd/get-todays-potd.ts';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
@@ -68,7 +68,9 @@
 
 <svelte:head>
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
+
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+
 	<link
 		rel="stylesheet"
 		href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap"
@@ -97,22 +99,26 @@
 		>
 			TrenTorch
 		</h1>
+
 		<p class="display mb-4 max-w-3xl text-3xl text-balance sm:text-5xl">
 			Don't memorize ML. Understand it from first principles.
 		</p>
+
 		<p class="mb-3 max-w-2xl text-lg text-muted-foreground">
 			Write every algorithm from scratch, from linear regression, neural networks, RL and inference
-			to kernels, and see exactly what your code does at every step.
-			{totalQuestions}+ problems with theory and practical explanation.
+			to kernels, and see exactly what your code does at every step. {totalQuestions}+ problems with
+			theory and practical explanation.
 		</p>
+
 		<p class="mb-8 font-mono text-sm text-muted-foreground">
 			Free. No subscriptions. Powered by sponsors and donations.
 		</p>
+
 		<div class="flex flex-wrap items-center justify-center gap-3">
-			<Button size="lg" href={resolve('/questions')} onclick={gateBehindSignIn}>
-				<BookOpen class="size-4" />
-				Questions
-			</Button>
+			<Button size="lg" href={resolve('questions')} onclick={gateBehindSignIn}
+				><BookOpen class="size-4" /> Questions</Button
+			>
+
 			<Button
 				size="lg"
 				variant="outline"

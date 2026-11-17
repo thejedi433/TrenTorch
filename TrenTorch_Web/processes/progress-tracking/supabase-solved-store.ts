@@ -1,4 +1,4 @@
-import { getSupabaseClient } from '$processes/auth/supabase-client';
+import { getSupabaseClient } from '#processes/auth/supabase-client.ts';
 
 export interface RemoteSolvedRow {
 	question_id: string;

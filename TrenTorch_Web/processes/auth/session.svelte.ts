@@ -1,4 +1,4 @@
-import { browser } from '$app/environment';
+import { browser } from '$app/env';
 import type { Session, User } from '@supabase/supabase-js';
 import { getSupabaseClient } from './supabase-client';
 

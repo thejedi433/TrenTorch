@@ -1,7 +1,7 @@
-import { browser } from '$app/environment';
+import { browser } from '$app/env';
 import { SvelteSet } from 'svelte/reactivity';
-import { session } from '$processes/auth/session.svelte';
-import { isPotdQuestion } from '$processes/potd/is-potd-question';
+import { session } from '#processes/auth/session.svelte.ts';
+import { isPotdQuestion } from '#processes/potd/is-potd-question.ts';
 import { upsertSolvedQuestion, deleteSolvedQuestion } from './supabase-solved-store';
 
 // Per-browser localStorage is the real, always-available copy -- every

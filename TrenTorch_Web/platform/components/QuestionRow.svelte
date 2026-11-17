@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
-	import { browser } from '$app/environment';
+	import { browser } from '$app/env';
 	import { Check } from '@lucide/svelte';
 	import DifficultyBadge from './DifficultyBadge.svelte';
-	import { solved } from '$processes/progress-tracking/solved.svelte';
-	import { attempted } from '$processes/progress-tracking/attempted.svelte';
-	import type { Question } from '$data/questions';
+	import { solved } from '#processes/progress-tracking/solved.svelte.ts';
+	import { attempted } from '#processes/progress-tracking/attempted.svelte.ts';
+	import type { Question } from '#data/questions.ts';
 
 	let { question }: { question: Question } = $props();
 

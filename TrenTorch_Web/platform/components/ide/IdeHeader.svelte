@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import type { QuestionContent, RuntimeState } from '$data/curriculum/types';
+	import type { QuestionContent, RuntimeState } from '#data/curriculum/types.ts';
 	import {
 		ArrowLeft,
 		ListChecks,
@@ -43,9 +43,7 @@
 
 	// See +page.svelte's fromPage comment -- ?from=N carries the Questions
 	// page a student came from back through here.
-	let backHref = $derived(
-		fromPage ? resolve(`/questions?page=${fromPage}`) : resolve('/questions')
-	);
+	let backHref = $derived(fromPage ? resolve(`questions?page=${fromPage}`) : resolve('questions'));
 </script>
 
 <header

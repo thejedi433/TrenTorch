@@ -1,5 +1,5 @@
 import { error } from '@sveltejs/kit';
-import { curriculum } from '$data/questions';
+import { curriculum } from '#data/questions.ts';
 import type { EntryGenerator, PageLoad } from './$types';
 
 // Prerendered: the curriculum's Part list is fixed at build time (same

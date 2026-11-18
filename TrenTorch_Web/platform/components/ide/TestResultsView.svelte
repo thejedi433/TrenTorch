@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { SubmissionResult } from '$data/curriculum/types';
+	import type { SubmissionResult } from '#data/curriculum/types.ts';
 	import { CheckCircle2, XCircle, ShieldCheck, AlertCircle } from '@lucide/svelte';
 
 	let { results = null } = $props<{

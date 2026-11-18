@@ -3,9 +3,9 @@
 	import markedKatex from 'marked-katex-extension';
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
-	import { browser } from '$app/environment';
-	import { Badge } from '$components/ui/badge';
-	import type { QuestionContent, QuestionMetadata } from '$data/curriculum/types';
+	import { browser } from '$app/env';
+	import { Badge } from '#components/ui/badge/index.ts';
+	import type { QuestionContent, QuestionMetadata } from '#data/curriculum/types.ts';
 	import { CheckCircle2, ChevronLeft, ChevronRight } from '@lucide/svelte';
 
 	// Registered once, module-wide -- READMEs write formulas as $inline$ or
@@ -61,6 +61,7 @@
 	let solutionHtml = $derived(
 		marked.parse('```python\n' + content.solutionCode + '\n```', { async: false }) as string
 	);
+
 	let explanationHtml = $derived(
 		content.explanationMarkdown
 			? (marked.parse(content.explanationMarkdown, { async: false }) as string)
@@ -208,10 +209,8 @@
 				<button
 					type="button"
 					class="border border-border bg-secondary px-3 py-1.5 font-mono text-xs font-medium text-foreground transition-colors hover:border-foreground/30 hover:bg-muted"
-					onclick={() => (showSolution = true)}
+					onclick={() => (showSolution = true)}>Reveal solution</button
 				>
-					Reveal solution
-				</button>
 			</div>
 		{:else}
 			<!-- eslint-disable-next-line svelte/no-at-html-tags -->

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import { ArrowRight, type LucideIcon } from '@lucide/svelte';
-	import { Progress } from '$components/ui/progress';
+	import { Progress } from '#components/ui/progress/index.ts';
 
 	let {
 		id,

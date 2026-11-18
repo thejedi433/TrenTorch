@@ -2,11 +2,11 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import { loadPyodide, type PyodideInterface } from 'pyodide';
-import generated from '$data/curriculum/generated-curriculum.json';
-import { buildTestHarness } from '$processes/ide-content/build-test-harness';
-import { sanitizeStudentCode } from '$processes/code-execution/sanitize-student-code';
-import { buildTestRunnerScript } from '$processes/code-execution/build-test-runner-script';
-import type { GeneratedQuestion } from '$processes/ide-content/curriculum-index';
+import generated from '#data/curriculum/generated-curriculum.json';
+import { buildTestHarness } from '#processes/ide-content/build-test-harness.ts';
+import { sanitizeStudentCode } from '#processes/code-execution/sanitize-student-code.ts';
+import { buildTestRunnerScript } from '#processes/code-execution/build-test-runner-script.ts';
+import type { GeneratedQuestion } from '#processes/ide-content/curriculum-index.ts';
 
 // Runs every code question's tests in real Pyodide, the way the browser does.
 //

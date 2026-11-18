@@ -1,16 +1,16 @@
 <script lang="ts">
-	import ProfileCard from '$components/ProfileCard.svelte';
-	import StatTile from '$components/StatTile.svelte';
-	import ContinueLearning from '$components/ContinueLearning.svelte';
-	import PartsChart from '$components/PartsChart.svelte';
-	import DifficultyChart from '$components/DifficultyChart.svelte';
-	import Button from '$components/Button.svelte';
+	import ProfileCard from '#components/ProfileCard.svelte';
+	import StatTile from '#components/StatTile.svelte';
+	import ContinueLearning from '#components/ContinueLearning.svelte';
+	import PartsChart from '#components/PartsChart.svelte';
+	import DifficultyChart from '#components/DifficultyChart.svelte';
+	import Button from '#components/Button.svelte';
 	import { LogOut } from '@lucide/svelte';
-	import { getProgressStats, getInProgressCount } from '$data/questions';
-	import { solved } from '$processes/progress-tracking/solved.svelte';
-	import { attempted } from '$processes/progress-tracking/attempted.svelte';
-	import { session, signOut } from '$processes/auth/session.svelte';
-	import { signInPrompt } from '$processes/auth/sign-in-prompt.svelte';
+	import { getProgressStats, getInProgressCount } from '#data/questions.ts';
+	import { solved } from '#processes/progress-tracking/solved.svelte.ts';
+	import { attempted } from '#processes/progress-tracking/attempted.svelte.ts';
+	import { session, signOut } from '#processes/auth/session.svelte.ts';
+	import { signInPrompt } from '#processes/auth/sign-in-prompt.svelte.ts';
 
 	const stats = $derived(getProgressStats(solved.slugs));
 	const percent = $derived(

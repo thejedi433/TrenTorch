@@ -1,18 +1,18 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
-	import { browser } from '$app/environment';
+	import { browser } from '$app/env';
 	import { CalendarCheck, ArrowRight, ChevronRight } from '@lucide/svelte';
-	import ModuleSection from '$components/ModuleSection.svelte';
-	import PartCard from '$components/PartCard.svelte';
-	import QuestionFilters from '$components/QuestionFilters.svelte';
-	import Pagination from '$components/Pagination.svelte';
-	import Button from '$components/Button.svelte';
-	import ProfileCard from '$components/ProfileCard.svelte';
-	import ProgressSummary from '$components/ProgressSummary.svelte';
-	import { curriculum, getProgressStats, getPartProgress } from '$data/questions';
-	import { getPartIcon } from '$data/part-icons';
-	import { solved } from '$processes/progress-tracking/solved.svelte';
+	import ModuleSection from '#components/ModuleSection.svelte';
+	import PartCard from '#components/PartCard.svelte';
+	import QuestionFilters from '#components/QuestionFilters.svelte';
+	import Pagination from '#components/Pagination.svelte';
+	import Button from '#components/Button.svelte';
+	import ProfileCard from '#components/ProfileCard.svelte';
+	import ProgressSummary from '#components/ProgressSummary.svelte';
+	import { curriculum, getProgressStats, getPartProgress } from '#data/questions.ts';
+	import { getPartIcon } from '#data/part-icons.ts';
+	import { solved } from '#processes/progress-tracking/solved.svelte.ts';
 
 	const stats = $derived(getProgressStats(solved.slugs));
 	const partProgress = $derived(getPartProgress(solved.slugs));
@@ -87,7 +87,6 @@
 	const pagedCurriculum = $derived(
 		filteredCurriculum.slice((currentPage - 1) * PARTS_PER_PAGE, currentPage * PARTS_PER_PAGE)
 	);
-
 	const pagedParts = $derived(
 		curriculum.slice((currentPage - 1) * CARDS_PER_PAGE, currentPage * CARDS_PER_PAGE)
 	);
@@ -141,10 +140,8 @@
 					<p class="text-sm text-muted-foreground">A new featured question, every day.</p>
 				</div>
 			</div>
-			<Button href={resolve('/potd')} class="shrink-0">
-				Try Now
-				<ArrowRight class="size-4" />
-			</Button>
+
+			<Button href={resolve('potd')} class="shrink-0">Try Now <ArrowRight class="size-4" /></Button>
 		</div>
 
 		<div>

@@ -1,6 +1,6 @@
-import { potdEntries } from '$data/potd';
-import { questionsById } from '$processes/ide-content/curriculum-index';
-import { toPotdSummary } from '$processes/potd/potd-summary';
+import { potdEntries } from '#data/potd.ts';
+import { questionsById } from '#processes/ide-content/curriculum-index.ts';
+import { toPotdSummary } from '#processes/potd/potd-summary.ts';
 import type { PageServerLoad } from './$types';
 
 // Runs at build time (the page is prerendered) and its result is written into

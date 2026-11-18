@@ -1,7 +1,14 @@
 /// <reference types="@sveltejs/kit" />
 /// <reference lib="webworker" />
 
-import { build, files, version } from '$service-worker';
+import { version } from '$app/env';
+import { assets, immutable } from '$app/manifest';
+import { asset } from '$app/paths';
+
+// SvelteKit 3: the old `$service-worker` module is gone -- `version` now
+// comes from `$app/env`, and the build/static file lists from
+// `$app/manifest` (paths are base-relative, so they go through
+// `asset()` to become cacheable absolute URLs).
 
 // Two jobs:
 //  1. App shell: precache this build's hashed JS/CSS/fonts on install and
@@ -21,7 +28,7 @@ const PYODIDE_CACHE = 'pyodide-v0.27.2';
 const PYODIDE_ORIGIN = 'https://cdn.jsdelivr.net';
 const PYODIDE_PATH = '/pyodide/v0.27.2/';
 
-const PRECACHE = [...build, ...files];
+const PRECACHE = [...immutable, ...assets].map((a) => asset(a.path));
 
 sw.addEventListener('install', (event) => {
 	event.waitUntil(

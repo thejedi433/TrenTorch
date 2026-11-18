@@ -1,4 +1,4 @@
-import { browser } from '$app/environment';
+import { browser } from '$app/env';
 import { SvelteSet } from 'svelte/reactivity';
 
 // Parallel to solved.svelte.ts, one state weaker: a question is "attempted"

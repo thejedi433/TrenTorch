@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { potdEntries } from '$data/potd';
+import { potdEntries } from '#data/potd.ts';
 import { getTodaysPotdPart, getPastPotdPart } from './get-potd-part';
 import { getTodaysPotd } from './get-todays-potd';
 import { localDateString } from './local-date-string';

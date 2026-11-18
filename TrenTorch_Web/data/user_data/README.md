@@ -2,7 +2,7 @@
 
 Documentation only. There are no real files in this folder at runtime — every user's progress lives entirely client-side, in `localStorage`, in their own browser. This folder exists so the shape of that data is written down and versioned next to the curriculum content it describes, the same way `data/app_data/README.md` documents `app_data/`.
 
-There is no backend and no account system yet: a user's data never leaves their browser, isn't synced across devices, and disappears if they clear site data. The site is fully prerendered with no server-side compute (see `svelte.config.js`'s `adapter-static` setup), so there is nowhere server-side for this data to live even if it wanted to.
+There is no backend and no account system yet: a user's data never leaves their browser, isn't synced across devices, and disappears if they clear site data. The site is fully prerendered with no server-side compute (see `.config/kit-options.ts`'s `adapter-static` setup), so there is nowhere server-side for this data to live even if it wanted to.
 
 ## Keys
 

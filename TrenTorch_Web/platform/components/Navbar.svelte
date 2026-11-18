@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { resolve } from '$app/paths';
-	import { browser } from '$app/environment';
+	import { browser } from '$app/env';
 	import ModeToggle from './ModeToggle.svelte';
 	import AccountButton from './AccountButton.svelte';
 	import Button from './Button.svelte';
@@ -9,7 +9,7 @@
 	import { Badge } from './ui/badge';
 	import { Menu, X, Star } from '@lucide/svelte';
 	import Github from './GithubIcon.svelte';
-	import { gateBehindSignIn } from '$processes/auth/gate-behind-sign-in';
+	import { gateBehindSignIn } from '#processes/auth/gate-behind-sign-in.ts';
 
 	const GITHUB_URL = 'https://github.com/TrenTorch/TrenTorch';
 
@@ -17,9 +17,9 @@
 	// pages themselves stay public, so the hrefs are still plain links.
 	const routes = [
 		{ href: resolve('/'), label: 'Home', gated: false },
-		{ href: resolve('/questions'), label: 'Questions', gated: true },
+		{ href: resolve('questions'), label: 'Questions', gated: true },
 		{
-			href: resolve('/potd'),
+			href: resolve('potd'),
 			label: 'Problem of the day',
 			pill: 'new' as const,
 			gated: true
@@ -37,6 +37,7 @@
 	let stars = $state<number | null>(null);
 	$effect(() => {
 		if (!browser) return;
+
 		fetch('https://api.github.com/repos/TrenTorch/TrenTorch')
 			.then((res) => (res.ok ? res.json() : null))
 			.then((data) => {

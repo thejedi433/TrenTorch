@@ -1,4 +1,4 @@
-import type { QuestionContent } from '$data/curriculum/types';
+import type { QuestionContent } from '#data/curriculum/types.ts';
 import type { GeneratedQuestion } from './curriculum-index';
 import { extractStarterCode } from './extract-starter-code';
 import { buildTestHarness } from './build-test-harness';

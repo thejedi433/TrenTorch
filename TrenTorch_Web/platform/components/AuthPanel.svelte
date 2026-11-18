@@ -5,7 +5,7 @@
 		signInWithGoogle,
 		signInWithMagicLink,
 		signOut
-	} from '$processes/auth/session.svelte';
+	} from '#processes/auth/session.svelte.ts';
 	import Button from './Button.svelte';
 	import Github from './GithubIcon.svelte';
 	import { Mail, LogOut, CheckCircle2 } from '@lucide/svelte';

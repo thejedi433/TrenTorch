@@ -1,4 +1,4 @@
-import type { GeneratedQuestion } from '$processes/ide-content/curriculum-index';
+import type { GeneratedQuestion } from '#processes/ide-content/curriculum-index.ts';
 
 // The few fields the POTD page shows for a question. The page used to look
 // questions up in the full curriculum index, which put every question's

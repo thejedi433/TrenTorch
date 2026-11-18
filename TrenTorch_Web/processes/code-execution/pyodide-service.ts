@@ -1,5 +1,5 @@
 import { writable, type Writable } from 'svelte/store';
-import type { ExecutionResult, RuntimeState, SubmissionResult } from '$data/curriculum/types';
+import type { ExecutionResult, RuntimeState, SubmissionResult } from '#data/curriculum/types.ts';
 import { sanitizeStudentCode } from './sanitize-student-code';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */

@@ -1,5 +1,5 @@
-import type { Part } from '$data/questions';
-import { potdEntries, type PotdEntry } from '$data/potd';
+import type { Part } from '#data/questions.ts';
+import { potdEntries, type PotdEntry } from '#data/potd.ts';
 import { parseLocalDateString, toDisplayQuestion } from './to-display-question';
 import { localDateString } from './local-date-string';
 import type { PotdSummary } from './potd-summary';

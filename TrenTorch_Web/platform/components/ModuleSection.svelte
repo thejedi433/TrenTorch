@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { ChevronDown } from '@lucide/svelte';
 	import QuestionRow from './QuestionRow.svelte';
-	import type { Part } from '$data/questions';
-	import { collapsedSections } from '$processes/progress-tracking/collapsed-sections.svelte';
+	import type { Part } from '#data/questions.ts';
+	import { collapsedSections } from '#processes/progress-tracking/collapsed-sections.svelte.ts';
 
 	let { part }: { part: Part } = $props();
 

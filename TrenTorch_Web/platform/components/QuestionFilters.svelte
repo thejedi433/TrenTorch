@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { Input } from '$components/ui/input';
-	import * as Select from '$components/ui/select';
+	import { Input } from '#components/ui/input/index.ts';
+	import * as Select from '#components/ui/select/index.ts';
 	import { Search } from '@lucide/svelte';
 
 	type SolvedFilter = 'all' | 'solved' | 'unsolved';

@@ -1,4 +1,4 @@
-import type { QuestionContent } from '$data/curriculum/types';
+import type { QuestionContent } from '#data/curriculum/types.ts';
 import { questionsById } from './curriculum-index';
 import { toQuestionContent } from './to-question-content';
 

@@ -5,8 +5,8 @@
 // once at module load (ES modules are cached singletons), then reused by
 // every function under processes/ide-content/ that needs to look a
 // question up by id or resolve a track-mate's oracle solution.
-import generatedCurriculum from '$data/curriculum/generated-curriculum.json';
-import type { QuestionMetadata } from '$data/curriculum/types';
+import generatedCurriculum from '#data/curriculum/generated-curriculum.json';
+import type { QuestionMetadata } from '#data/curriculum/types.ts';
 
 export interface GeneratedQuestion {
 	id: string;
